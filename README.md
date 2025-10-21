@@ -6,7 +6,7 @@ Some old computers are limited to 16-bit PCMCIA slots, such as the Amiga A600 an
 ## Step 1 - Find an Old PC Laptop
 Somehow no matter the age or condition, minimum cost for a laptop is around £20 on eBay. The vast majority have no AC charger. Salvors systematically dispose of these, along with the hard disks. I had found a couple of Prism cards for around £12 each, so even paying £15-£20 for a laptop was probably too much for this task.
 
-In the end I was able to find a damaged Compaq Armade M700 Pentium III laptop for £10 with shipped. This model's on-board Ethernet supports PXE, and the card slots are 16-bit compatible. It was listed for parts owing to screen damage, but I checked with the seller first that it powered up ok. There was a catch: only 128MB of RAM. Enough for Windows XP, so probably ok. But no hard drive either!
+In the end I was able to find a damaged Compaq Armada M700 Pentium III laptop for £10 with shipped. This model's on-board Ethernet supports PXE, and the card slots are 16-bit compatible. It was listed for parts owing to screen damage, but I checked with the seller first that it powered up ok. There was a catch: only 128MB of RAM. Enough for Windows XP, so probably ok. But no hard drive either!
 
 ## Constraints
 - Need a live OS because low RAM (128MB), and no hard disk

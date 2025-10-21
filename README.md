@@ -56,7 +56,7 @@ In the end I found a Compaq Armada M700 Pentium III laptop with charger for £5 
 - Edit `hostap_config.h `:
   - force a define for `PRISM2_DOWNLOAD_SUPPORT`
   - Force a define for `PRISM2_NON_VOLATILE_DOWNLOAD`
-- If your prism card is not claimed by the hostap driver on insertion (see `dmesg` output) then view its device ids using `pccardctl ident`
+- If your prism card is not claimed by the hostap_cs driver on insertion (see `dmesg` output, sometimes orinoco_cs may claim) then view its device ids using `pccardctl ident`
   - Edit `hostap_cs.c` searching for PCMCIA_DEVICE_MANF_CARD and add your additional ids
 - Compile the hostap kernel modules using:
   `modules make -C /lib/modules/2.6.30.5/build M=$(pwd) modules`

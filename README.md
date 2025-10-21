@@ -38,8 +38,10 @@ In the end I found a Compaq Armada M700 Pentium III laptop with charger for £5 
 - If you need network access, run the Connect to the Internet wizard which will bring up eth0 with DHCP
 - Browse to sda1 shortcut on desktop (USB key) and click on both the devx and kernel-sources SFS files to mount
 - Exit X to console to maximise available RAM
-- Copy the hostap module sources to a build folder on the USB stick:  
-  `cp -R -a ${DEVX}/usr/src/linux-2.6.30.5/drivers/net/wireless/hostap /initrd/mnt/dev_ro2`
+- Copy the hostap module sources to a build folder on the USB stick:
+  ```
+  cp -R -a ${DEVX}/usr/src/linux-2.6.30.5/drivers/net/wireless/hostap /initrd/mnt/dev_ro2
+  ```
 - Save the following shell script as `/initrd/mnt/dev_ro2/toolchain.sh` (on your USB stick, for easy re-use):
   ```
   #!/bin/sh
@@ -59,7 +61,9 @@ In the end I found a Compaq Armada M700 Pentium III laptop with charger for £5 
 - If your prism card is not claimed by the hostap_cs driver on insertion (see `dmesg` output, sometimes orinoco_cs may claim) then view its device ids using `pccardctl ident`
   - Edit `hostap_cs.c` searching for PCMCIA_DEVICE_MANF_CARD and add your additional ids
 - Compile the hostap kernel modules using:
-  `modules make -C /lib/modules/2.6.30.5/build M=$(pwd) modules`
+  ```
+  modules make -C /lib/modules/2.6.30.5/build M=$(pwd) modules
+  ```
 - The new module binaries are now in the `hostap` folder on your USB key, so you can skip directly to this point if you need to restart
 - Stop and eject your card (slot number may vary):
   ```
@@ -74,7 +78,11 @@ In the end I found a Compaq Armada M700 Pentium III laptop with charger for £5 
   modprobe /initrd/mnt/dev_ro2/hostap/hostap_cs.ko
   ```
 - Insert card then check `dmesg` for a hostap_cs driver claim, and firmware versions
-- If the NIC id is between 0x8002 to 0x8008 then unfortunately no WPA2 support, you are limited to station firmware 1.5.6  
-  `prism2_srec -v -f wlan0 s1010506.hex`
-- Else you get primary firmware 1.0.1 and station firmware 1.7.4  
-  `prism2_srec -v -f wlan0 pk010101.hex sf010704.hex`
+- If the NIC id is between 0x8002 to 0x8008 then unfortunately no WPA2 support, you are limited to station firmware 1.5.6
+  ```
+  prism2_srec -v -f wlan0 s1010506.hex
+  ```
+- Else you get primary firmware 1.0.1 and station firmware 1.7.4
+  ```
+  prism2_srec -v -f wlan0 pk010101.hex sf010704.hex
+  ```

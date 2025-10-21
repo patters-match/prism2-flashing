@@ -38,21 +38,18 @@ In the end I was able to find a damaged Compaq Armada M700 Pentium III laptop fo
 - If you need network access, run the Connect to the Internet wizard which will bring up eth0 with DHCP
 - Browse to sda1 shortcut on desktop (USB key) and click on both the devx and kernel-sources SFS files to mount
 - Exit X to console to maximise available RAM
+- Copy the hostap module sources to a build folder on the USB stick:
+  `cp -R -a ${DEVX}/usr/src/linux-2.6.30.5/drivers/net/wireless/hostap /initrd/mnt/dev_ro2`
 - Save the following shell script as `/initrd/mnt/dev_ro2/toolchain.sh` (on your USB stick, for easy re-use):
   ```
   #!/bin/sh
   export DEVX=/mnt/+initrd+mnt+dev_ro2+devx_431.sfs
   export KERNEL_SRC=/mnt/+initrd+mnt+dev_ro2+kernel-sources_431.sfs/usr/src/linux-2.6.30.5
-  
   export PATH=${PATH}:${DEVX}/usr/bin:${DEVX}/usr/sbin:${DEVX}/bin
-  
   export C_INCLUDE_PATH=${C_INCLUDE_PATH}:${KERNEL_SRC}/include
   export CPLUS_INCLUDE_PATH=${CPLUS_INCLUDE_PATH}:${KERNEL_SRC}/include
   export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${DEVX}/lib:${DEVX}/usr/lib
-  
-  ln -sfn ${DEVX}/usr/src/linux-2.6.30.5 /lib/modules/2.6.30.5/build
-  
-  cp -R -a ${DEVX}/usr/src/linux-2.6.30.5/drivers/net/wireless/hostap /initrd/mnt/dev_ro2
+  ln -sfn ${DEVX}/usr/src/linux-2.6.30.5 /lib/modules/2.6.30.5/build  
   cd /initrd/mnt/dev_ro2/hostap
   ```
 - Source that script, e.g. `source /initrd/mnt/dev_ro2/toolchain.sh`
@@ -61,20 +58,18 @@ In the end I was able to find a damaged Compaq Armada M700 Pentium III laptop fo
   - Force a define for `PRISM2_NON_VOLATILE_DOWNLOAD`
 - If your prism card is not claimed by the hostap driver on insertion (see `dmesg` output) then view its device ids using `pccardctl ident`
   - Edit `hostap_cs.c` searching for PCMCIA_DEVICE_MANF_CARD and add your additional ids
-- Compile the hostap kernel using:
+- Compile the hostap kernel modules using:
   `modules make -C /lib/modules/2.6.30.5/build M=$(pwd) modules`
-- The new module binaries are now in the `hostap` folder on your USB key, so you can skip directly to this point if you need to restart to fetch the firmware files.
+- The new module binaries are now in the `hostap` folder on your USB key, so you can skip directly to this point if you need to restart
 - Stop and eject your card (slot number may vary):
   ```
   ifconfig wlan0 down
   ifconfig wifi0 down
   pccardctl eject 1
   # remove card
-
   rmmod orinoco_cs
   rmmod hostap_cs
   rmmod hostap
-
   modprobe /initrd/mnt/dev_ro2/hostap/hostap.ko
   modprobe /initrd/mnt/dev_ro2/hostap/hostap_cs.ko
   ```

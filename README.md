@@ -40,7 +40,7 @@ It arrived well packed, though with that classic mouldy garage smell. A corner o
 - If you need network access, run the Connect to the Internet wizard which will bring up eth0 with DHCP
 - Browse to sda1 shortcut on desktop (USB key) and click on both the devx and kernel-sources SFS files to mount
 - Exit X to console to maximise available RAM
-- Save the following shell script as `/initrd/mnt/dev_ro2/` (on your USB stick, for easy re-use):
+- Save the following shell script as `/initrd/mnt/dev_ro2/toolchain.sh` (on your USB stick, for easy re-use):
   ```
   #!/bin/sh
   export DEVX=/mnt/+initrd+mnt+dev_ro2+devx_431.sfs

@@ -1,14 +1,12 @@
 # How to Upgrade Prism2 WiFi Card Firmware 
 
 ## Why?
-Some old computers are limited to 16-bit PCMCIA slots, such as the Amiga A600 and A1200 systems. This restricts them to Wifi cards based on the early 802.11b standard which used WEP encryption. However, cards based on the Intersil Prism2 design received firmware updates for WPA (TKIP), then later for WPA2 (CCMP, or AES encryption). This makes them quite useful since most access points will still support 802.11b clients provided they match the configured security requirements. There is a catch for Amiga users though - the card firmware cannot be updated using an Amiga. Old PC laptops with 16-bit compatible PCMCIA controllers are not so common any more.
+Some old computers are limited to 16-bit PCMCIA slots, such as the Amiga A600 and A1200 systems. This restricts them to Wifi cards based on the early 802.11b standard which used WEP encryption. However, cards licensing the Intersil Prism2 hardware received firmware updates for WPA (TKIP), then later for WPA2 (CCMP, or AES encryption). This makes them quite useful since most access points will still support 802.11b clients provided they match the configured security requirements. There is a catch for Amiga users though - the card firmware cannot be updated using an Amiga. Old PC laptops with 16-bit compatible PCMCIA controllers are not so common any more.
 
 ## Step 1 - Find an Old PC Laptop
 Somehow no matter the age or condition, minimum cost for a laptop is around £20 on eBay. The vast majority have no AC charger. Salvors systematically dispose of these, along with the hard disks. I had found a couple of Prism cards for around £12 each, so even paying £15-£20 for a laptop was probably too much for this task.
 
-In the end I was able to find a Compaq Armade M700 Pentium III laptop for £10 with shipped. This model's on-board Ethernet supports PXE, and the card slots are 16-bit compatible. It was listed for parts owing to screen damage, but I checked with the seller first that it powered up ok. There was a catch: only 128MB of RAM. Enough for Windows XP, so probably ok.
-
-It arrived well packed, though with that classic mouldy garage smell. A corner of the palm rest was broken off, the screen worked ok though it had a large pressure or water damage streak in the middle. Neither were problems for my use case. There was no hard drive though.
+In the end I was able to find a damaged Compaq Armade M700 Pentium III laptop for £10 with shipped. This model's on-board Ethernet supports PXE, and the card slots are 16-bit compatible. It was listed for parts owing to screen damage, but I checked with the seller first that it powered up ok. There was a catch: only 128MB of RAM. Enough for Windows XP, so probably ok. But no hard drive either!
 
 ## Constraints
 - Need a live OS because low RAM (128MB), and no hard disk
@@ -81,7 +79,7 @@ It arrived well packed, though with that classic mouldy garage smell. A corner o
   modprobe /initrd/mnt/dev_ro2/hostap/hostap_cs.ko
   ```
 - Insert card then check `dmesg` for a hostap_cs driver claim, and firmware versions
-- If the NIC id is between 0x8002 to 0x8008 then unfortunately no WPA2 support, you are limited to station firmware 1.5.6.
+- If the NIC id is between 0x8002 to 0x8008 then unfortunately no WPA2 support, you are limited to station firmware 1.5.6. 
   `prism2_srec -v -f wlan0 s1010506.hex`
-- Else you get primary firmware 1.0.1 and station firmware 1.7.4
+- Else you get primary firmware 1.0.1 and station firmware 1.7.4 
   `prism2_srec -v -f wlan0 pk010101.hex sf010704.hex`

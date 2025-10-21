@@ -38,7 +38,7 @@ In the end I found a Compaq Armada M700 Pentium III laptop with charger for £5 
 - If you need network access, run the Connect to the Internet wizard which will bring up eth0 with DHCP
 - Browse to sda1 shortcut on desktop (USB key) and click on both the devx and kernel-sources SFS files to mount
 - Exit X to console to maximise available RAM
-- Copy the hostap module sources to a build folder on the USB stick:
+- Copy the hostap module sources to a build folder on the USB stick:  
   `cp -R -a ${DEVX}/usr/src/linux-2.6.30.5/drivers/net/wireless/hostap /initrd/mnt/dev_ro2`
 - Save the following shell script as `/initrd/mnt/dev_ro2/toolchain.sh` (on your USB stick, for easy re-use):
   ```
@@ -52,7 +52,7 @@ In the end I found a Compaq Armada M700 Pentium III laptop with charger for £5 
   ln -sfn ${DEVX}/usr/src/linux-2.6.30.5 /lib/modules/2.6.30.5/build  
   cd /initrd/mnt/dev_ro2/hostap
   ```
-- Source that script, e.g. `source /initrd/mnt/dev_ro2/toolchain.sh`
+- Source that script, i.e. `source /initrd/mnt/dev_ro2/toolchain.sh`
 - Edit `hostap_config.h `:
   - force a define for `PRISM2_DOWNLOAD_SUPPORT`
   - Force a define for `PRISM2_NON_VOLATILE_DOWNLOAD`

@@ -79,7 +79,7 @@ In the end I was able to find a damaged Compaq Armada M700 Pentium III laptop fo
   modprobe /initrd/mnt/dev_ro2/hostap/hostap_cs.ko
   ```
 - Insert card then check `dmesg` for a hostap_cs driver claim, and firmware versions
-- If the NIC id is between 0x8002 to 0x8008 then unfortunately no WPA2 support, you are limited to station firmware 1.5.6. 
+- If the NIC id is between 0x8002 to 0x8008 then unfortunately no WPA2 support, you are limited to station firmware 1.5.6  
   `prism2_srec -v -f wlan0 s1010506.hex`
-- Else you get primary firmware 1.0.1 and station firmware 1.7.4 
+- Else you get primary firmware 1.0.1 and station firmware 1.7.4  
   `prism2_srec -v -f wlan0 pk010101.hex sf010704.hex`

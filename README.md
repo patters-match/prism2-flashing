@@ -37,10 +37,6 @@ I was lucky to find a Compaq Armada M700 Pentium III laptop with charger for £5
 ## Method
 - [I used my NAS](https://www.synoforum.com/resources/how-to-pxe-boot-linux-windows-using-syslinux.115/) to provide DHCP options for PXE and to serve the kernel and initrd RAM disk image via syslinux. Puppy cannot do an NFS mount during PXE for the rest of the distro, so we must put the sfs files on a USB key.
 - Alternatively you could not bother with PXE and use [Rufus](https://github.com/pbatard/rufus) to setup Puppy on a bootable USB key instead
-- Boot Puppy into its Xvesa window environment, and set date and time to prevent compiler warnings later
-- Run the Connect to the Internet wizard which will bring up eth0 with DHCP
-- Browse to sda1 shortcut on desktop (USB key) and click on both the devx and kernel-sources SFS files to mount (download links above, in the Selection section)
-- Exit X to console to maximise available RAM
 - Save the following shell script as `/initrd/mnt/dev_ro2/toolchain.sh` (on your USB stick, for easy re-use):
   ```
   #!/bin/sh
@@ -52,7 +48,14 @@ I was lucky to find a Compaq Armada M700 Pentium III laptop with charger for £5
   export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${DEVX}/lib:${DEVX}/usr/lib
   ln -sfn ${DEVX}/usr/src/linux-2.6.30.5 /lib/modules/2.6.30.5/build  
   ```
-- Source that script to set the variables, i.e. `source /initrd/mnt/dev_ro2/toolchain.sh`
+- Boot Puppy into its Xvesa window environment, and set date and time to prevent compiler warnings later
+- Run the Connect to the Internet wizard which will bring up eth0 with DHCP
+- Browse to sda1 shortcut on desktop (USB key) and click on both the devx and kernel-sources SFS files to mount (download links above, in the Selection section)
+- Exit X to console to maximise available RAM
+- Source the toolchain script to set the variables
+  ```
+  source /initrd/mnt/dev_ro2/toolchain.sh
+  ```
 - Copy the hostap module sources to a build folder on the USB stick:
   ```
   cp -a ${DEVX}/usr/src/linux-2.6.30.5/drivers/net/wireless/hostap /initrd/mnt/dev_ro2/

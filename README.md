@@ -57,7 +57,6 @@ I was lucky to find a Compaq Armada M700 Pentium III laptop with charger for £5
 - Copy the hostap module sources to a build folder on the USB stick:
   ```
   cp -R -a ${DEVX}/usr/src/linux-2.6.30.5/drivers/net/wireless/hostap /initrd/mnt/dev_ro2
-  cd /initrd/mnt/dev_ro2/hostap
   ```
 - Edit `hostap_config.h `:
   - Force a define for `PRISM2_DOWNLOAD_SUPPORT`
@@ -66,7 +65,7 @@ I was lucky to find a Compaq Armada M700 Pentium III laptop with charger for £5
   - Edit `hostap_cs.c` searching for PCMCIA_DEVICE_MANF_CARD and add your additional ids - your card must be claimed by hostap_cs to be able to flash it
 - Compile the hostap kernel modules using:
   ```
-  modules make -C /lib/modules/2.6.30.5/build M=$(pwd) modules
+  modules make -C /lib/modules/2.6.30.5/build M=/initrd/mnt/dev_ro2/hostap modules
   ```
 - The new module binaries are now in the `hostap` folder on your USB key, so you can skip directly to this point if you need to restart
 - Stop and eject your card (slot number may vary):

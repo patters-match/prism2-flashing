@@ -3,7 +3,7 @@
 ## Why?
 Some old computers are limited to 16-bit PCMCIA slots, such as the Amiga A600 and A1200 systems. This restricts them to WiFi cards based on the early 802.11b standard which used the WEP (RC4) security standard.
 
-However, cards licensing Intersil Prism2 hardware received firmware updates for WPA (TKIP), then later for WPA2 (CCMP/AES). This makes them quite useful since most access points will still support 802.11b radios provided they match the configured security requirements.
+However, cards licensing Intersil Prism2 hardware received firmware updates for WPA (TKIP), then later for WPA2 (CCMP). This makes them quite useful since most access points will still support 802.11b radios provided they match the configured security requirements.
 
 There is a catch for Amiga users though - the card firmware cannot be updated using an Amiga. And 20+ year old PC laptops with 16-bit compatible PCMCIA controllers are not so common any more, making this upgrade quite a challenge.
 

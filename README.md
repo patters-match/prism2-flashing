@@ -61,7 +61,7 @@ I was lucky to find a Compaq Armada M700 Pentium III laptop with charger for £5
   - Force a define for `PRISM2_DOWNLOAD_SUPPORT`
   - Force a define for `PRISM2_NON_VOLATILE_DOWNLOAD`
 - If your prism card is not claimed by the hostap_cs driver on insertion (see `dmesg` output, some card models are claimed by orinoco_cs) then view its device ids using `pccardctl ident`
-  - Edit `hostap_cs.c` searching for PCMCIA_DEVICE_MANF_CARD and add your additional ids - your card must be claimed by hostap_cs to be able to flash it
+  - Edit `hostap_cs.c` searching for `PCMCIA_DEVICE_MANF_CARD` and add your additional ids - your card must be claimed by hostap_cs to be able to flash it
 - Compile the hostap kernel modules using:
   ```
   modules make -C /lib/modules/2.6.30.5/build M=/initrd/mnt/dev_ro2/hostap modules

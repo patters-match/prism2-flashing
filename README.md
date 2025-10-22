@@ -39,7 +39,7 @@ I was lucky to find a Compaq Armada M700 Pentium III laptop with charger for £5
 - Alternatively you could not bother with PXE and use [Rufus](https://github.com/pbatard/rufus) to setup Puppy on a bootable USB key instead
 - Boot Puppy into its Xvesa window environment, and set date and time to prevent compiler warnings later
 - Run the Connect to the Internet wizard which will bring up eth0 with DHCP
-- Browse to sda1 shortcut on desktop (USB key) and click on both the devx and kernel-sources SFS files to mount
+- Browse to sda1 shortcut on desktop (USB key) and click on both the devx and kernel-sources SFS files to mount (download links above, in the Selection section)
 - Exit X to console to maximise available RAM
 - Save the following shell script as `/initrd/mnt/dev_ro2/toolchain.sh` (on your USB stick, for easy re-use):
   ```

@@ -67,7 +67,7 @@ I was lucky to find a Compaq Armada M700 Pentium III laptop with charger for £5
   modules make -C /lib/modules/2.6.30.5/build M=/initrd/mnt/dev_ro2/hostap modules
   ```
 - The new module binaries are now in the `hostap` folder on your USB key, so you can skip directly to this point if you need to restart
-- Stop and eject your card (slot number may vary), then replace the running kernel modules with the newly compiled ones:
+- Stop and eject your card (slot number may vary), then replace the loaded kernel modules with the newly compiled ones:
   ```
   ifconfig wlan0 down
   ifconfig wifi0 down

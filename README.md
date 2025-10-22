@@ -1,7 +1,7 @@
 # 📶 How to Upgrade Prism2 WiFi Card Firmware 
 
 ## Why?
-Some old computers are limited to 16-bit PCMCIA slots, such as the Amiga A600 and A1200 systems. This restricts them to WiFi cards based on the early 802.11b standard which used the WEP (RC4) security standard.
+Some old computers are limited to 16-bit PCMCIA slots, such as the Amiga A600 and A1200 systems. This restricts them to 802.11b WiFi cards which used the initial WEP (RC4) security standard.
 
 However, cards licensing Intersil Prism2 hardware received firmware updates for WPA (TKIP), then later for WPA2 (CCMP). This makes them quite useful since most current access points will still support 802.11b radios provided they match the configured security requirements.
 

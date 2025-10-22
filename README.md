@@ -84,7 +84,7 @@ I was lucky to find a Compaq Armada M700 Pentium III laptop with charger for £5
   ```
   prism2_srec -v -f wlan0 s1010506.hex
   ```
-- ...else you get primary firmware 1.0.1 and station firmware 1.7.4
+- ...else you get primary firmware 1.0.1 and station firmware 1.7.4 which support WPA2
   ```
   prism2_srec -v -f wlan0 pk010101.hex sf010704.hex
   ```

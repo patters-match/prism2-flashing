@@ -37,7 +37,7 @@ I was lucky to find a Compaq Armada M700 Pentium III laptop with charger for £5
 ## Method
 - [I used my NAS](https://www.synoforum.com/resources/how-to-pxe-boot-linux-windows-using-syslinux.115/) to provide DHCP options for PXE and to serve the kernel and initrd RAM disk image via syslinux. Puppy cannot do an NFS mount during PXE for the rest of the distro, so we must put the sfs files on a USB key.
 - Alternatively you could not bother with PXE and use [Rufus](https://github.com/pbatard/rufus) to setup Puppy on a bootable USB key instead
-- Boot Puppy, and set date and time in X (to prevent compiler warnings)
+- Boot Puppy into its Xvesa window environment, and set date and time to prevent compiler warnings later
 - Run the Connect to the Internet wizard which will bring up eth0 with DHCP
 - Browse to sda1 shortcut on desktop (USB key) and click on both the devx and kernel-sources SFS files to mount
 - Exit X to console to maximise available RAM

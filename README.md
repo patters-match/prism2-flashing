@@ -85,7 +85,7 @@ I was lucky to find a Compaq Armada M700 Pentium III laptop with charger for £5
   wifi0: NIC: id=0x801b v1.0.0
   wifi0: PRI: id=0x15 v1.1.0 (primary firmware)
   wifi0: STA: id=0x1f v1.4.2 (station firmware)
-  ``
+  ```
 - ⚠️ Read [this guide](https://junsun.net/linux/intersil-prism/) very carefully, in order to select the appropriate [firmware files](https://junsun.net/linux/intersil-prism/firmware/) for your card. In particular, you will need to refer to [this table](https://junsun.net/linux/intersil-prism/IDtable.html) to determine the correct letter prefixes for your specific model.
 - Download the firmware you need, for example
   ```

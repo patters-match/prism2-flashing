@@ -85,7 +85,7 @@ I was lucky to find a Compaq Armada M700 Pentium III laptop with charger for £5
   ```
   prism2_srec -v -f wlan0 s1010506.hex
   ```
-- ...else you'll need primary firmware 1.1.1 and station firmware 1.7.4 which support WPA2. 1.8.x versions exist but they are not recommended. The example below uses `K` for the primary firmware, and `F` for the station firmware which were appropriate for my Linksys WPC11 ver 3 (NIC id=0x801b):
+- ...else you'll need primary firmware 1.1.1 and station firmware 1.7.4 which support WPA2. Versions 1.8.x exist but they are not recommended. The example below uses `K` for the primary firmware, and `F` for the station firmware which were appropriate for my Linksys WPC11 ver 3 (NIC id=0x801b):
   ```
   prism2_srec -v -f wlan0 pk010101.hex sf010704.hex
   ```

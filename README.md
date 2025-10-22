@@ -21,7 +21,7 @@ I was lucky to find a Compaq Armada M700 Pentium III laptop with charger for £5
 ## Candidates
 | OS  | Notes |
 | --- | ----- |
-| [DSL 4.4.10](https://distro.ibiblio.org/damnsmall/current/) | Uses linux-wlan-ng rather than hostap, no prism2_cs driver, apt-get package repositories are offline |
+| [DSL 4.4.10](https://distro.ibiblio.org/damnsmall/current/) | Uses linux-wlan-ng rather than hostap, no prism2_cs driver, apt-get package repos offline |
 | [DSL 2024](https://damnsmalllinux.org/2024-download.html#google_vignette) | Too new, no 16 bit PCMCIA |
 | [Magic-M Mini XP 2](https://archive.org/details/magic-m-mini-xp-2) | Tiny XP-based Windows PE in 37MB, however this cab file expands out to 122MB |
 | [OpenAP-CT](https://web.archive.org/web/20080919072905/http://tools.collegeterrace.net/openap-ct/) | Linux bootable floppy disk image for embedded systems, hostap compiled with flash support, but no Texas Instruments PCMCIA support |

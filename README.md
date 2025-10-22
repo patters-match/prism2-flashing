@@ -79,9 +79,15 @@ I was lucky to find a Compaq Armada M700 Pentium III laptop with charger for £5
   modprobe /initrd/mnt/dev_ro2/hostap/hostap.ko
   modprobe /initrd/mnt/dev_ro2/hostap/hostap_cs.ko
   ```
-- Insert card then check `dmesg` for a hostap_cs driver claim, and firmware versions
+- Insert card then check `dmesg` for a hostap_cs driver claim, and firmware versions, for example
+  ```
+  prism2_hw_init: initialized in 200ms
+  wifi0: NIC: id=0x801b v1.0.0
+  wifi0: PRI: id=0x15 v1.1.0 (primary firmware)
+  wifi0: STA: id=0x1f v1.4.2 (station firmware)
+  ``
 - ⚠️ Read [this guide](https://junsun.net/linux/intersil-prism/) very carefully, in order to select the appropriate [firmware files](https://junsun.net/linux/intersil-prism/firmware/) for your card. In particular, you will need to refer to [this table](https://junsun.net/linux/intersil-prism/IDtable.html) to determine the correct letter prefixes for your specific model.
-- Download the firmware you need, e.g.
+- Download the firmware you need, for example
   ```
   wget http://linux.junsun.net/intersil-prism/firmware/1.7.4/pk010101.hex
   wget http://linux.junsun.net/intersil-prism/firmware/1.7.4/sf010704.hex

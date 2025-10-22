@@ -80,7 +80,12 @@ I was lucky to find a Compaq Armada M700 Pentium III laptop with charger for £5
   modprobe /initrd/mnt/dev_ro2/hostap/hostap_cs.ko
   ```
 - Insert card then check `dmesg` for a hostap_cs driver claim, and firmware versions
-- ⚠️ Read [this guide](https://junsun.net/linux/intersil-prism/) very carefully, in order to select the appropriate [firmware files](https://junsun.net/linux/intersil-prism/firmware/) for your card. In particular, you will need to refer to [this table](https://junsun.net/linux/intersil-prism/IDtable.html) to determine the correct letter prefixes for your specific model. You can fetch them with wget e.g. `wget http://linux.junsun.net/intersil-prism/firmware/1.7.4/pk010101.hex`
+- ⚠️ Read [this guide](https://junsun.net/linux/intersil-prism/) very carefully, in order to select the appropriate [firmware files](https://junsun.net/linux/intersil-prism/firmware/) for your card. In particular, you will need to refer to [this table](https://junsun.net/linux/intersil-prism/IDtable.html) to determine the correct letter prefixes for your specific model.
+- Download the firmware you need, e.g.
+```
+wget http://linux.junsun.net/intersil-prism/firmware/1.7.4/pk010101.hex
+wget http://linux.junsun.net/intersil-prism/firmware/1.7.4/sf010704.hex
+```
 - In summary, if the NIC id is between 0x8002 to 0x8008 it's an old revision limited to station firmware 1.5.6 only, which offers WPA but not WPA2. The example below uses prefix `1` for the station firmware which was appropriate for an early Netgear MA401 (NIC id=0x8008): 
   ```
   prism2_srec -v -f wlan0 s1010506.hex

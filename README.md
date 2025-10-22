@@ -57,7 +57,7 @@ I was lucky to find a Compaq Armada M700 Pentium III laptop with charger for £5
   ```
   cp -a ${DEVX}/usr/src/linux-2.6.30.5/drivers/net/wireless/hostap /initrd/mnt/dev_ro2/
   ```
-- Edit `hostap_config.h `:
+- Use `vi` to edit `hostap_config.h `:
   - Force a define for `PRISM2_DOWNLOAD_SUPPORT`
   - Force a define for `PRISM2_NON_VOLATILE_DOWNLOAD`
 - If your prism card is not claimed by the hostap_cs driver on insertion (see `dmesg` output, some card models are claimed by orinoco_cs) then view its device ids using `pccardctl ident`

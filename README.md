@@ -37,7 +37,6 @@ I was lucky to find a Compaq Armada M700 Pentium III laptop with charger for £5
 ## Method
 - [I used my NAS](https://www.synoforum.com/resources/how-to-pxe-boot-linux-windows-using-syslinux.115/) to provide DHCP options for PXE and to serve the kernel and initrd RAM disk image via syslinux. Puppy cannot do an NFS mount during PXE for the rest of the distro, so we must put the sfs files on a USB key.
 - Alternatively you could not bother with PXE and use [Rufus](https://github.com/pbatard/rufus) to setup Puppy on a bootable USB key instead
-- Download the following firmware files to your USB stick: [s1010506.hex](https://junsun.net/linux/intersil-prism/firmware/1.5.6/s1010506.hex) [pk010101.hex](https://junsun.net/linux/intersil-prism/firmware/1.7.4/pk010101.hex) [sf010704.hex](https://junsun.net/linux/intersil-prism/firmware/1.7.4/sf010704.hex)
 - Boot Puppy, and set date and time in X (to prevent compiler warnings)
 - If you need network access, run the Connect to the Internet wizard which will bring up eth0 with DHCP
 - Browse to sda1 shortcut on desktop (USB key) and click on both the devx and kernel-sources SFS files to mount
@@ -81,11 +80,12 @@ I was lucky to find a Compaq Armada M700 Pentium III laptop with charger for £5
   modprobe /initrd/mnt/dev_ro2/hostap/hostap_cs.ko
   ```
 - Insert card then check `dmesg` for a hostap_cs driver claim, and firmware versions
-- If the NIC id is between 0x8002 to 0x8008 then you are limited to station firmware 1.5.6 only, which offers WPA but not WPA2
+- ⚠️ Read [this guide](https://junsun.net/linux/intersil-prism/) very carefully, in order to select the appropriate [firmware files](https://junsun.net/linux/intersil-prism/firmware/) for your card. In particular, you will need to refer to [this table](https://junsun.net/linux/intersil-prism/IDtable.html) to determine the correct letter prefixes for your specific model. If you need to remove the USB key to add the firmwares, you can reboot and repeat the kernel module removal and reload steps above.
+- In summary, if the NIC id is between 0x8002 to 0x8008 it's an old revision limited to station firmware 1.5.6 only, which offers WPA but not WPA2. The example below uses prefix `1` for the station firmware which was appropriate for an early Netgear MA401 (NIC id=0x8008): 
   ```
   prism2_srec -v -f wlan0 s1010506.hex
   ```
-- ...else you get primary firmware 1.1.1 and station firmware 1.7.4 which support WPA2
+- ...else you'll need primary firmware 1.1.1 and station firmware 1.7.4 which support WPA2. 1.8.x versions exist but they are not recommended. The example below uses `K` for the primary firmware, and `F` for the station firmware which were appropriate for my Linksys WPC11 ver 3 (NIC id=0x801b):
   ```
   prism2_srec -v -f wlan0 pk010101.hex sf010704.hex
   ```

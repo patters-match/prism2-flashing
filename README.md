@@ -16,7 +16,7 @@ I was lucky to find a Compaq Armada M700 Pentium III laptop with charger for £5
 - Need a live OS because low RAM (128MB), and no hard disk
 - Need 16bit PCMCIA support
 - For Linux need hostap prism driver for prism2_srec flashing tool
-- Need a Linux kernel =< 2.6.32, because hostap was removed after that
+- Need a Linux kernel =< 2.6.32, because hostap kernel module was removed after that
 
 ## Candidates
 | OS  | Notes |

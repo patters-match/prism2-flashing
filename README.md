@@ -92,7 +92,7 @@ I was lucky to find a Compaq Armada M700 Pentium III laptop with charger for £5
   wget http://linux.junsun.net/intersil-prism/firmware/1.7.4/pk010101.hex
   wget http://linux.junsun.net/intersil-prism/firmware/1.7.4/sf010704.hex
   ```
-- In summary, if the NIC id is between 0x8002 to 0x8008 it's an old revision limited to station firmware 1.5.6 only, which offers WPA but not WPA2. The example below uses prefix `1` for the station firmware which was appropriate for an early Netgear MA401 (NIC id=0x8008): 
+- In summary, if the NIC id is between 0x8002 to 0x8008 it's an early hardware version limited to station firmware 1.5.6 only, which offers WPA but not WPA2. The example below uses prefix `1` for the station firmware which was appropriate for an early Netgear MA401 (NIC id=0x8008): 
   ```
   prism2_srec -v -f wlan0 s1010506.hex
   ```

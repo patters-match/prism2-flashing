@@ -82,7 +82,7 @@ I was lucky to find a Compaq Armada M700 Pentium III laptop with charger for £5
   modprobe /initrd/mnt/dev_ro2/hostap/hostap_cs.ko
   ```
 - Insert card then check `dmesg` for a hostap_cs driver claim, and firmware versions
-- If the NIC id is between 0x8002 to 0x8008 then unfortunately no WPA2 support, you are limited to station firmware 1.5.6
+- If the NIC id is between 0x8002 to 0x8008 then unfortunately no WPA2 support, you are limited to station firmware 1.5.6 which I think offers WPA
   ```
   prism2_srec -v -f wlan0 s1010506.hex
   ```

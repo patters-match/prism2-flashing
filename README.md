@@ -37,7 +37,7 @@ I was lucky to find a Compaq Armada M700 Pentium III laptop with charger for £5
 ## Method
 - [I used my NAS](https://www.synoforum.com/resources/how-to-pxe-boot-linux-windows-using-syslinux.115/) to provide DHCP options for PXE and to serve the kernel and initrd RAM disk image via syslinux. Puppy cannot do an NFS mount during PXE for the rest of the distro, so we must put the additional SFS files for the dev tools and kernel sources on a USB key.
 - Alternatively you could not bother with PXE and use [Rufus](https://github.com/pbatard/rufus) to setup Puppy on a bootable USB key instead
-- Save the following shell script as `/initrd/mnt/dev_ro2/toolchain.sh` (on your USB stick, for easy re-use):
+- Save the following shell script as `toolchain.sh` on your USB stick
   ```
   #!/bin/sh
   export DEVX=/mnt/+initrd+mnt+dev_ro2+devx_431.sfs

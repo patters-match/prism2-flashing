@@ -58,7 +58,7 @@ I was lucky to find a Compaq Armada M700 Pentium III laptop with charger for £5
   ```
 - Copy the hostap module sources to a build folder on the USB stick:
   ```
-  cp -a ${DEVX}/usr/src/linux-2.6.30.5/drivers/net/wireless/hostap /initrd/mnt/dev_ro2/
+  cp -a ${KERNEL_SRC}/drivers/net/wireless/hostap /initrd/mnt/dev_ro2/
   ```
 - Use `vi` to edit `hostap_config.h `:
   - Force a define for `PRISM2_DOWNLOAD_SUPPORT`

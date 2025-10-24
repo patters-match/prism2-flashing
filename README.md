@@ -37,7 +37,7 @@ I was lucky to find a Compaq Armada M700 Pentium III laptop with charger for £5
 ## Method
 - [I used my NAS](https://www.synoforum.com/resources/how-to-pxe-boot-linux-windows-using-syslinux.115/) to provide DHCP options for PXE and to serve the kernel and initrd RAM disk image via syslinux. Puppy cannot do an NFS mount during PXE for the rest of the distro, so we must put the additional SFS files for the dev tools and kernel sources on a USB key.
 - Alternatively you could not bother with PXE and use [Rufus](https://github.com/pbatard/rufus) to setup Puppy on a bootable USB key instead
-- Save the following shell script as `toolchain.sh` on your USB stick
+- Save the following shell script as `toolchain.sh` on your USB stick:
   ```
   #!/bin/sh
   export DEVX=/mnt/+initrd+mnt+dev_ro2+devx_431.sfs
@@ -52,7 +52,7 @@ I was lucky to find a Compaq Armada M700 Pentium III laptop with charger for £5
 - Run the Connect to the Internet wizard which will bring up eth0 with DHCP
 - Browse to sda1 shortcut on desktop (USB key) and click on both the devx and kernel-sources SFS files to mount (download links above, in the Selection section)
 - Exit X to console to maximise available RAM
-- Source the toolchain script to set the variables
+- Source the toolchain script to set the variables:
   ```
   source /initrd/mnt/dev_ro2/toolchain.sh
   ```
@@ -65,7 +65,7 @@ I was lucky to find a Compaq Armada M700 Pentium III laptop with charger for £5
   - Force a define for `PRISM2_NON_VOLATILE_DOWNLOAD`
 - If your prism card is not claimed by the hostap_cs driver on insertion (see `dmesg` output, some card models are claimed by orinoco_cs) then view its device ids using `pccardctl ident`
   - Edit `hostap_cs.c` searching for `PCMCIA_DEVICE_MANF_CARD` and add your additional ids - your card must be claimed by hostap_cs to be able to flash it
-- Compile the hostap kernel modules using:
+- Compile the hostap kernel modules:
   ```
   modules make -C /lib/modules/2.6.30.5/build M=/initrd/mnt/dev_ro2/hostap modules
   ```
@@ -82,7 +82,7 @@ I was lucky to find a Compaq Armada M700 Pentium III laptop with charger for £5
   modprobe /initrd/mnt/dev_ro2/hostap/hostap.ko
   modprobe /initrd/mnt/dev_ro2/hostap/hostap_cs.ko
   ```
-- Insert card then check `dmesg` for a hostap_cs driver claim, and firmware versions, for example
+- Insert card then check `dmesg` for a hostap_cs driver claim, and firmware versions, for example:
   ```
   prism2_hw_init: initialized in 200ms
   wifi0: NIC: id=0x801b v1.0.0
@@ -90,7 +90,7 @@ I was lucky to find a Compaq Armada M700 Pentium III laptop with charger for £5
   wifi0: STA: id=0x1f v1.4.2 (station firmware)
   ```
 - ⚠️ Read [this guide](https://junsun.net/linux/intersil-prism/) very carefully, in order to select the appropriate [firmware files](https://junsun.net/linux/intersil-prism/firmware/) for your card. In particular, you will need to refer to [this table](https://junsun.net/linux/intersil-prism/IDtable.html) to determine the correct letter prefixes for your specific NIC id.
-- Download the firmware you need, for example
+- Download the firmware you need, for example:
   ```
   wget http://linux.junsun.net/intersil-prism/firmware/1.7.4/pk010101.hex
   wget http://linux.junsun.net/intersil-prism/firmware/1.7.4/sf010704.hex

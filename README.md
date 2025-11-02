@@ -48,10 +48,10 @@ I was lucky to find a Compaq Armada M700 Pentium III laptop with charger for £5
   export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${DEVX}/lib:${DEVX}/usr/lib
   ln -sfn ${DEVX}/usr/src/linux-2.6.30.5 /lib/modules/2.6.30.5/build  
   ```
-- Boot Puppy into its Xvesa window environment, and set date and time to prevent compiler warnings later
-- Run the Connect to the Internet wizard which will bring up eth0 with DHCP
+- Boot Puppy into its Xvesa window environment, and open 'Menu > Desktop > Set date and time' to prevent compiler warnings later
+- Run 'Menu > Setup > Network Wizard' which will bring up eth0 with DHCP
 - Browse to sda1 shortcut on desktop (USB key) and click on both the devx and kernel-sources SFS files to mount (download links above, in the Selection section)
-- Exit X to console to maximise available RAM
+- 'Menu > Shutdown > Exit to prompt' to maximise available RAM
 - Source the toolchain script to set the variables:
   ```
   source /initrd/mnt/dev_ro2/toolchain.sh

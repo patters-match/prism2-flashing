@@ -75,6 +75,7 @@ I was lucky to find a Compaq Armada M700 Pentium III laptop with charger for £5
 - The new module binaries are now in the `hostap` folder on your USB key, so you can skip directly to this point if you need to restart
 - Stop and eject your card (slot number may vary), then replace the active kernel modules with the newly compiled ones:
   ```
+  ifconfig eth1 down
   ifconfig wlan0 down
   ifconfig wifi0 down
   pccardctl eject 1
@@ -82,8 +83,9 @@ I was lucky to find a Compaq Armada M700 Pentium III laptop with charger for £5
   rmmod orinoco_cs
   rmmod hostap_cs
   rmmod hostap
-  modprobe /initrd/mnt/dev_ro2/hostap/hostap.ko
-  modprobe /initrd/mnt/dev_ro2/hostap/hostap_cs.ko
+  cp /initrd/mnt/dev_ro2/hostap/hostap.ko /lib/modules/2.6.30.5/kernel/drivers/net/wireless/hostap
+  cp /initrd/mnt/dev_ro2/hostap/hostap_cs.ko /lib/modules/2.6.30.5/kernel/drivers/net/wireless/hostap
+  depmod
   ```
 - Insert card then check `dmesg` for a hostap_cs driver claim, and firmware versions, for example:
   ```

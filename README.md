@@ -78,7 +78,8 @@ I was lucky to find a Compaq Armada M700 Pentium III laptop with charger for £5
   ifconfig eth1 down # if orinoco_cs claimed the card
   ifconfig wlan0 down
   ifconfig wifi0 down
-  pccardctl eject 1 # remove card
+  pccardctl eject 1
+  # remove card
   rmmod orinoco_cs
   rmmod hostap_cs
   rmmod hostap

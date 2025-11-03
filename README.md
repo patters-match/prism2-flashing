@@ -3,9 +3,9 @@
 ## Why?
 Some old computers are limited to 16-bit PCMCIA slots, such as the Amiga A600 and A1200 systems. This restricts them to 802.11b WiFi cards which used the initial WEP (RC4) security standard.
 
-However, cards built on Intersil Prism2 hardware received firmware updates to support WPA (TKIP) via a host-side supplicant, which also permits the driver to support WPA2 (CCMP). In both cases encryption is handled by the host CPU rather than the card itself. This makes Prism2 based cards quite useful since most current access points will still support 802.11b radios provided they match the configured security requirements.
+However, cards built on Intersil Prism2 hardware received firmware updates to support WPA (TKIP) via a host-side supplicant, which also permits the driver to support WPA2 (CCMP). In both cases encryption is handled by the host CPU rather than the card itself.
 
-There is a catch for Amiga users though - the card firmware cannot be updated using an Amiga. And 20+ year old PC laptops with 16-bit compatible PCMCIA controllers are not so common any more, making this upgrade quite a challenge.
+This makes Prism2 based cards quite useful since most current access points will still support 802.11b radios provided they match the configured security requirements. There is a catch for Amiga users though - the card firmware cannot be updated using an Amiga. And 20+ year old PC laptops with 16-bit compatible PCMCIA controllers are not so common any more, making this upgrade quite a challenge.
 
 ## Step 1 - Find an Old PC Laptop
 Somehow no matter the age or condition, laptops seem to cost at least £20 on eBay. The vast majority have no AC charger. Salvors systematically dispose of these, along with the hard disks.

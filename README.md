@@ -69,7 +69,7 @@ Finding the kernel sources was very difficult, but I was able to determine the f
   ```
   pccardctl ident
   ```
-  - Edit `hostap_cs.c` searching for `PCMCIA_DEVICE_MANF_CARD` and add your additional ids - your card must be claimed by hostap_cs to be able to flash it
+then edit `hostap_cs.c` searching for `PCMCIA_DEVICE_MANF_CARD` and add your additional ids - your card must be claimed by hostap_cs to be able to flash it
 - Compile the hostap kernel modules:
   ```
   modules make -C /lib/modules/2.6.30.5/build M=/initrd/mnt/dev_ro2/hostap modules

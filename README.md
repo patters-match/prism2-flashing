@@ -34,7 +34,7 @@ I was lucky to find a Compaq Armada M700 Pentium III laptop with charger for £5
 ## Selection
 [Puppy Linux 4.31](https://distro.ibiblio.org/puppylinux/puppy-2_%26_3_%26_4/puppy-4.3.1/special-puppies/pup-431-small.iso) because it has an optional [development toolchain](https://distro.ibiblio.org/puppylinux/puppy-2_%26_3_%26_4/puppy-4.3.1/devx_431.sfs) and [kernel sources](https://archive.org/download/Puppy_Linux_Kernels/kernel_src-2.6.30.5-patched.sfs4.sfs) to allow recompiling the hostap driver kernel module with firmware update support enabled.
 
-Finding the kernel sources was very difficult, but I was able to determine the filename by navigating the [folder](https://distro.ibiblio.org/puppylinux/puppy-2_%26_3_%26_4/puppy-4.3.1/readme-files.htm) stated in the release notes within the [Web Archive version of the puppylinux.com site](https://web.archive.org/web/20091031093115/http://www.puppylinux.com/sources/kernel-2.6.30.5/).
+Finding the kernel sources was very difficult, but I was able to determine the filename by navigating the folder stated in the [release notes](https://distro.ibiblio.org/puppylinux/puppy-2_%26_3_%26_4/puppy-4.3.1/readme-files.htm) within the [Web Archive version of the puppylinux.com site](https://web.archive.org/web/20091031093115/http://www.puppylinux.com/sources/kernel-2.6.30.5/).
 
 ## Method
 - [I used my NAS](https://www.synoforum.com/resources/how-to-pxe-boot-linux-windows-using-syslinux.115/) to provide DHCP options for PXE and to serve the kernel and initrd RAM disk image via syslinux. Puppy cannot do an NFS mount during PXE for the rest of the distro, so we must put the additional SFS files for the dev tools and kernel sources on a USB key.

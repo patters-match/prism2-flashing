@@ -94,15 +94,15 @@ I was lucky to find a Compaq Armada M700 Pentium III laptop with charger for £5
   wifi0: PRI: id=0x15 v1.1.0 (primary firmware)
   wifi0: STA: id=0x1f v1.4.2 (station firmware)
   ```
+- As a precaution, dump the current hardware configuration settings from the card which will allow you to fully revert:
+  ```
+  prism2_srec -D > backup.pda
+  ```
 - ⚠️ Read [this guide](https://junsun.net/linux/intersil-prism/) very carefully, in order to select the appropriate [firmware files](https://junsun.net/linux/intersil-prism/firmware/) for your card. In particular, you will need to refer to [this table](https://junsun.net/linux/intersil-prism/IDtable.html) to determine the correct letter prefixes for your specific NIC id.
 - Download the firmware you need, for example:
   ```
   wget http://junsun.net/linux/intersil-prism/firmware/1.7.4/pk010101.hex
   wget http://junsun.net/linux/intersil-prism/firmware/1.7.4/sf010704.hex
-  ```
-- As a precaution, dump the current hardware configuration settings from the card which will allow you to fully revert:
-  ```
-  prism2_srec -D > backup.pda
   ```
 - In summary, if the NIC id is from 0x8002 to 0x8008 then it's an early hardware version limited to station firmware 1.7.1 only (no primary firmware update). Fortunately this appears to be the first version to support WPA2. The example below uses prefix `1` for the station firmware which was appropriate for an early Netgear MA401 (NIC id=0x8008): 
   ```

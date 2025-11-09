@@ -99,7 +99,7 @@ Finding the kernel sources was very difficult, but I was able to determine the f
 - As a precaution, dump the current hardware configuration settings from the card which will allow you to fully revert:
   ```
   cd /initrd/mnt/dev_ro2/
-  prism2_srec -D > backup.pda
+  prism2_srec -D wlan0 > backup.pda
   ```
 - ⚠️ Read [this guide](https://junsun.net/linux/intersil-prism/) very carefully, in order to select the appropriate [firmware files](https://junsun.net/linux/intersil-prism/firmware/) for your card. In particular, you will need to refer to [this table](https://junsun.net/linux/intersil-prism/IDtable.html) to determine the correct letter prefixes for your specific NIC id.
 - Download the firmware you need, for example:

@@ -96,7 +96,7 @@ Finding the kernel sources was very difficult, but I was able to determine the f
   wifi0: PRI: id=0x15 v1.1.0 (primary firmware)
   wifi0: STA: id=0x1f v1.4.2 (station firmware)
   ```
-- As a precaution, dump the current hardware configuration settings from the card which will allow you to fully revert:
+- As a precaution, dump the current hardware configuration settings (radio permitted channels, MAC address, etc.) from the card, which will allow you to fully revert in case of problems:
   ```
   cd /initrd/mnt/dev_ro2/
   prism2_srec -D wlan0 > backup.pda

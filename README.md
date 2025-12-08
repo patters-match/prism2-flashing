@@ -52,7 +52,7 @@ Finding the kernel sources was very difficult, but I was able to determine the f
   ```
 - Boot Puppy into its Xvesa window environment, and open **Menu > Desktop > Set date and time** to prevent compiler warnings later
 - Run **Menu > Setup > Network Wizard** and bring up eth0 with DHCP
-- Browse to sda1 shortcut on desktop (USB key) and click on both the devx and kernel-sources SFS files to mount (download links above, in the Selection section)
+- Browse to sda1 shortcut on desktop (USB key) and click on both the devx and kernel-sources SFS files to mount (download links above, in the [Selection section](#Selection))
 - **Menu > Shutdown > Exit to prompt** to maximise available RAM
 - Source the toolchain script to set the variables:
   ```

@@ -12,13 +12,15 @@ Somehow no matter the age or condition, laptops seem to cost at least £20 on eB
 
 I was lucky to find a Compaq Armada M700 Pentium III laptop with charger for £5 (£10 shipped). This model's on-board Ethernet supports PXE, and the card slots are 16-bit compatible. It was listed for parts owing to screen damage, but I checked with the seller first that it powered up ok. One potential issue: only 128MB of RAM. Enough for Windows XP, so probably ok. But no hard drive either!
 
-## Constraints
+##  Step 1 - Choose an OS
+
+### Constraints
 - Need a live OS because low RAM (128MB), and no hard disk
 - Need 16bit PCMCIA support
 - For Linux need hostap prism driver for `prism2_srec` flashing tool
 - Need a Linux kernel =< 2.6.32, because the hostap kernel module was removed after that
 
-## Candidates
+### Candidates
 | OS  | Notes |
 | --- | ----- |
 | [DSL 4.4.10](https://distro.ibiblio.org/damnsmall/current/) | Uses linux-wlan-ng rather than hostap, no prism2_cs driver, apt-get package repos offline |
@@ -31,12 +33,12 @@ I was lucky to find a Compaq Armada M700 Pentium III laptop with charger for £5
 | Windows XP | Can be installed to USB, but the bus is reinitialised on driver init, breaking the boot process |
 | [Xubuntu 10.04](https://old-releases.ubuntu.com/releases/xubuntu/releases/10.04/release/) | Booted to text mode (less RAM), working hostap but compiled without firmware update support (default) |
 
-## Selection
+### Selection
 [Puppy Linux 4.31](https://distro.ibiblio.org/puppylinux/puppy-2_%26_3_%26_4/puppy-4.3.1/special-puppies/pup-431-small.iso) because it has an optional [development toolchain](https://distro.ibiblio.org/puppylinux/puppy-2_%26_3_%26_4/puppy-4.3.1/devx_431.sfs) and [kernel sources](https://archive.org/download/Puppy_Linux_Kernels/kernel_src-2.6.30.5-patched.sfs4.sfs) to allow recompiling the hostap driver kernel module with firmware update support enabled.
 
 Finding the kernel sources was very difficult, but I was able to determine the filename by navigating the folder stated in the [release notes](https://distro.ibiblio.org/puppylinux/puppy-2_%26_3_%26_4/puppy-4.3.1/readme-files.htm) within the [Web Archive version of the puppylinux.com site](https://web.archive.org/web/20091031093115/http://www.puppylinux.com/sources/kernel-2.6.30.5/). Although this file had not been archived by the crawl, it had been independently uploaded to archive.org as part of a [larger collection](https://archive.org/download/Puppy_Linux_Kernels).
 
-## Method
+## Step 3 - Method
 - [I used my NAS](https://www.synoforum.com/resources/how-to-pxe-boot-linux-windows-using-syslinux.115/) to provide DHCP options for PXE and to serve the kernel and initrd RAM disk image via syslinux. Puppy cannot do an NFS mount during PXE for the rest of the distro, so we must put the additional SFS files for the dev tools and kernel sources on a USB key.
 - Alternatively you could not bother with PXE and use [Rufus](https://github.com/pbatard/rufus) to setup Puppy on a bootable USB key instead
 - Save the following shell script as `toolchain.sh` on your USB stick:

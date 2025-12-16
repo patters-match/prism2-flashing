@@ -12,7 +12,7 @@ Somehow no matter the age or condition, laptops seem to cost at least £20 on eB
 
 I was lucky to find a Compaq Armada M700 Pentium III laptop with charger for £5 (£10 shipped). This model's on-board Ethernet supports PXE, and the card slots are 16-bit compatible. It was listed for parts owing to screen damage, but I checked with the seller first that it powered up ok. One potential issue: only 128MB of RAM. Enough for Windows XP, so probably ok. But no hard drive either!
 
-##  Step 1 - Choose an OS
+##  Step 2 - Choose an OS
 
 ### Constraints
 - Need a live OS because low RAM (128MB), and no hard disk

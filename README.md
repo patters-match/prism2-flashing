@@ -38,7 +38,7 @@ I was lucky to find a Compaq Armada M700 Pentium III laptop with charger for £5
 
 Finding the kernel sources was very difficult, but I was able to determine the filename by navigating the folder stated in the [release notes](https://distro.ibiblio.org/puppylinux/puppy-2_%26_3_%26_4/puppy-4.3.1/readme-files.htm) within the [Web Archive version of the puppylinux.com site](https://web.archive.org/web/20091031093115/http://www.puppylinux.com/sources/kernel-2.6.30.5/). Although this file had not been archived by the crawl, it had been independently uploaded to archive.org as part of a [larger collection](https://archive.org/download/Puppy_Linux_Kernels).
 
-## Step 3 - Method
+## Step 3 - Upgrade Method
 - [I used my NAS](https://www.synoforum.com/resources/how-to-pxe-boot-linux-windows-using-syslinux.115/) to provide DHCP options for PXE and to serve the kernel and initrd RAM disk image via syslinux. Puppy cannot do an NFS mount during PXE for the rest of the distro, so we must put the additional SFS files for the dev tools and kernel sources on a USB key.
 - Alternatively you could not bother with PXE and use [Rufus](https://github.com/pbatard/rufus) to setup Puppy on a bootable USB key instead
 - Save the following shell script as `toolchain.sh` on your USB stick:

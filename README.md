@@ -1,5 +1,7 @@
 # 📶 How to Upgrade Prism2 WiFi Card Firmware 
 
+![Amiga 600 Connected via WPA2](images/amiga600_wpa2.jpg)
+
 ## Why?
 Some old computers are limited to 16-bit PCMCIA slots, such as the Amiga A600 and A1200 systems. This restricts them to 802.11b WiFi cards which used the initial WEP (RC4) security standard.
 

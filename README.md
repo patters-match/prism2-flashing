@@ -101,6 +101,10 @@ Finding the kernel sources was very difficult, but I was able to determine the f
 - As a precaution, dump the current hardware configuration settings (radio permitted channels, MAC address, etc.) from the card, which will allow you to fully revert in case of problems:
   ```
   cd /initrd/mnt/dev_ro2/
+  prism2_srec -D wlan0
+  ```
+- Check that the command completes without error, then store this output in a file:
+  ```
   prism2_srec -D wlan0 > backup.pda
   ```
 - ⚠️ Read [this guide](https://junsun.net/linux/intersil-prism/) very carefully, in order to select the appropriate [firmware files](https://junsun.net/linux/intersil-prism/firmware/) for your card. In particular, you will need to refer to [this table](https://junsun.net/linux/intersil-prism/IDtable.html) to determine the correct letter prefixes for your specific NIC id.
@@ -117,3 +121,36 @@ Finding the kernel sources was very difficult, but I was able to determine the f
   ```
   prism2_srec -v -f wlan0 pk010101.hex sf010704.hex
   ```
+## Recovering a Bad Flash
+
+### My Failure
+I upgraded four different cards using this method without incident, but while upgrading a Netgear MA401RA (which is labelled MA401 ver 2.5) I encountered a flash failure using `prism2_srec`, bricking the card. The chosen firmwares were definitely correct. It could have been a random glitch, but I suspect that the root cause may lie in the fact that this card's component ID (0x800c) is the only one which was re-used across two divergent hardware types, as seen in the table **3.6. Reference Design Support Map** in [this Intersil specification document](https://web.archive.org/web/20070723081421/http://home.eunet.cz/jt/wifi/download.pdf) aimed at OEMs. As can be seen from that table, these two reference designs have divergent memory maps.
+
+### Tooling Choice
+- The `prism2_srec` tool is unable to recover a bricked card since it needs a driver instance to communicate with.
+- There is a suggestion that the [`prism2dl` binary](https://junsun.net/linux/intersil-prism/prism2dl) can recover firmware, but I was unable to get it to detect PCMCIA devices at all.
+- As a last resort I switched my attention to the DOS [ILHOPFW.EXE](https://junsun.net/linux/intersil-prism/dos-resurrection/) flash tool.
+
+### Boot Floppy generation
+It turns out that many bootable floppy images are malformed, and have hard disk partition table boot sectors rather than floppy disk ones. Modern firmwares are tolerant of this, but vintage hardware is more picky. I had been concerned my laptop's floppy drive might be dead, but it turned out to be fine once I used [this FreeDOS bootable image](https://web.archive.org/web/20080614011528/http://home.eunet.cz/jt/wifi/floppy_flash.img) which I was able to transfer to PuppyLinux using its FTP client. Since I have no other usable floppy drive I wrote the floppy directly on the laptop from PuppyLinux using:
+```
+dd if=floppy_flash.img of=/dev/fd0 bs=512
+sync
+```
+
+### Recovery Process
+In my case the PDA was not damaged so I did not need to concern myself with it.
+1. Send an *Initial firmware* via the card's bootloader, which will be loaded into RAM, and leave powered on. This enables Genesis Mode which can be used for flashing the Primary and Secondary firmwares.
+2. Flash a Primary firmware in Genesis Mode and leave the card powered on.
+3. Flash a Secondary firmware in Genesis Mode.
+
+### Method
+- Read [this recovery guide](https://junsun.net/linux/intersil-prism/dos-resurrection/prismdos.txt) carefully.
+- [Part two](https://junsun.net/linux/intersil-prism/dos-resurrection/DOScd.txt) contains some more useful information.
+- Initial firmwares are very scarce. The one I needed - prefix `D`: id010001.hex - was available [here](https://junsun.net/linux/intersil-prism/dos-resurrection/).
+- Two others - prefixes `1` and `4` - are available [here](https://web.archive.org/web/20071013182828/http://www.netgate.com/support/prism_firmware/primary.tar.gz).
+- I modified the bootdisk to include these and I replaced FLASH.EXE with ILHOPFW.EXE and its corresponding INI file.
+- I added the FreeDOS `mode`, `more`, and `edit` commands.
+- I ran `ILHOPFW -vb` to determine my laptop's Cardbus Bridge PCI identifiers, noting that it was a Texas Instruments controller not defined in the INI file.
+- Noting that all the TI cardbus controllers share the same config, and that mine bore a similar ID, I used `edit` to clone a new matching entry in ILHOPFW.INI with the proper MS-DOS line endings.
+- TBC

@@ -131,7 +131,7 @@ I upgraded four different cards using this method without incident, but while up
 - There is a suggestion that the `prism2dl` [binary](https://junsun.net/linux/intersil-prism/prism2dl) can recover firmware, but I was unable to get it to detect PCMCIA devices at all.
 - As a last resort I switched my attention to the DOS [ILHOPFW.EXE](https://junsun.net/linux/intersil-prism/dos-resurrection/) flash tool.
 
-### Boot Floppy generation
+### Boot Floppy Creation
 It turns out that many bootable floppy images are malformed, and have hard disk partition table boot sectors rather than floppy disk ones. Modern BIOSes are tolerant of this, but vintage hardware is more picky. I had been concerned my laptop's floppy drive might be dead, but it turned out to be fine once I used [this FreeDOS bootable image](https://web.archive.org/web/20080614011528/http://home.eunet.cz/jt/wifi/floppy_flash.img) which I was able to transfer to Puppy Linux using its FTP client. Since I have no other usable floppy drive I wrote the floppy directly on the laptop from Puppy Linux using:
 ```
 dd if=floppy_flash.img of=/dev/fd0 bs=512
@@ -147,15 +147,21 @@ In my case the PDA was not damaged so I did not need to concern myself with it.
 ### Method
 - Read [this recovery guide](https://junsun.net/linux/intersil-prism/dos-resurrection/prismdos.txt) carefully.
 - [Part two](https://junsun.net/linux/intersil-prism/dos-resurrection/DOScd.txt) contains some more useful information.
-- Initial firmwares are very scarce. The one I needed - prefix `D`: id010001.hex - was available [here](https://junsun.net/linux/intersil-prism/dos-resurrection/).
+- Determine which Initial firmware your NIC id requires in the [device table](https://junsun.net/linux/intersil-prism/IDtable.html).
+- Initial firmwares are scarce. The one I needed for NIC id 0x800c - prefix `D`: id010001.hex - was available [here](https://junsun.net/linux/intersil-prism/dos-resurrection/). There is a [reported success](https://junsun.net/linux/intersil-prism/dos-resurrection/prismdos.txt) using this same firmware to recover NIC id 0x801a.
 - Two others - prefixes `1` and `4` - are available [here](https://web.archive.org/web/20071013182828/http://www.netgate.com/support/prism_firmware/primary.tar.gz).
-- I modified the bootdisk to include these and I replaced FLASH.EXE with ILHOPFW.EXE and its corresponding INI file.
+- I modified the bootdisk to include these firmwares and I replaced FLASH.EXE with ILHOPFW.EXE and its corresponding INI file.
 - I added the [FreeDOS](https://www.freedos.org/download/) `mode`, `more`, and `edit` commands.
-- I ran `ILHOPFW -vb` to determine my laptop's Cardbus Bridge PCI identifiers, noting that it was a Texas Instruments PCI1450 controller not defined in the INI file.
-- Noting that all the TI cardbus controllers share the same config, and that mine bore a similar ID, I used `edit` to clone a new matching entry in ILHOPFW.INI with the proper MS-DOS line endings.
-- ```
+- I ran `ILHOPFW -vb` to determine my laptop's Cardbus Bridge PCI identifiers, [determining](https://pcilookup.com) that it was a Texas Instruments PCI1450 controller not defined in the INI file.
+- Observing that all the TI cardbus controllers share the same config, and that mine bore a similar product ID, I used `edit` to clone a new matching entry in ILHOPFW.INI with the proper MS-DOS line endings.
+- I switched the console to higher display resolution:
+  ```
   mode con: cols=80 lines=50
+  ```
+- Then I enabled Genesis Mode, and reflashed the intended firmwares:
+  ```
   ILHOPFW.EXE -vb -3v -on -3842 0F07 -i ID010001.HEX -gen
   ILHOPFW.EXE -vb -3v -on -3842 0F07 -gen -hf -d PK010101.HEX
   ILHOPFW.EXE -vb -3v -on -3842 0F07 -gen -hf -d SF010704.HEX
   ```
+- This tool reported that the CIS was invalid, but this was never flashed, and the card reported its information just fine using `pccardctl ident` so I left it alone.

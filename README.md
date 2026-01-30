@@ -139,7 +139,7 @@ sync
 ```
 
 ### Recovery Process
-In my case the PDA was not damaged so I did not need to concern myself with it.
+In my case the card's PDA was not damaged so I did not need to concern myself with it.
 1. Send an *Initial firmware* via the card's bootloader, which will be loaded into RAM, and leave powered on. This enables Genesis Mode which can be used for flashing the Primary and Secondary firmwares.
 2. Flash a Primary firmware in Genesis Mode and leave the card powered on.
 3. Flash a Secondary firmware in Genesis Mode.

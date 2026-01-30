@@ -123,27 +123,27 @@ Finding the kernel sources was very difficult, but I was able to determine the f
   ```
 # 🚑 Recovering From a Bad Flash
 
-### Update Failure
+## Update Failure
 I upgraded four different cards using the above method without incident, but while upgrading a Netgear MA401RA (which is labelled MA401 ver 2.5) I encountered a flash failure using `prism2_srec`, bricking the card. The chosen firmwares were certainly correct. It could have been a random glitch, but I suspect that the root cause may lie in the fact that this card's component ID (0x800c) is the only one which was re-used across two divergent hardware types, as seen in the table *3.6 Reference Design Support Map* in [this Intersil specification document](https://web.archive.org/web/20070723081421/http://home.eunet.cz/jt/wifi/download.pdf) aimed at OEMs. As can be seen from that table, these two reference designs have divergent memory maps.
 
-### Tooling Choice
+## Tooling Choice
 - The `prism2_srec` utility is unable to recover a dead card since it talks to the running hostap driver.
 - There is a suggestion that the `prism2dl` [binary](https://junsun.net/linux/intersil-prism/prism2dl) can recover firmware, but I was unable to get it to detect PCMCIA devices at all.
 - As a last resort I switched my attention to the DOS [ILHOPFW.EXE](https://junsun.net/linux/intersil-prism/dos-resurrection/) flash tool.
 
-### Boot Floppy Creation
+## Boot Floppy Creation
 It turns out that many bootable floppy images are malformed, and have hard disk partition table boot sectors rather than floppy disk ones. Modern BIOSes are tolerant of this, but vintage hardware is more picky. I had been concerned my laptop's floppy drive might be dead, but it turned out to be fine once I used [this FreeDOS bootable image](https://web.archive.org/web/20080614011528/http://home.eunet.cz/jt/wifi/floppy_flash.img) which I was able to transfer to Puppy Linux using its FTP client. Since I have no other usable floppy drive I wrote the floppy directly on the laptop from Puppy Linux using:
 ```
 dd if=floppy_flash.img of=/dev/fd0 bs=512
 sync
 ```
 
-### Recovery Process
+## Recovery Process
 1. Send an *Initial firmware* via the card's bootloader, which will be loaded into the card's onboard RAM, and leave the card powered up. This enables Genesis Mode which can be used for flashing the Primary and Secondary firmwares.
 2. Flash a Primary firmware in Genesis Mode and leave the card powered up.
 3. Flash a Secondary firmware in Genesis Mode.
 
-### Method
+## Method
 - Read the Prism flash utility [user guide](https://web.archive.org/web/20040805234847/http://home.eunet.cz/jt/wifi/flash.pdf).
 - Unlike this [worked example](https://junsun.net/linux/intersil-prism/dos-resurrection/prismdos.txt), my card's PDA was not damaged so I did not need to concern myself with it.
 - [Part two](https://junsun.net/linux/intersil-prism/dos-resurrection/DOScd.txt) contains some more useful information.

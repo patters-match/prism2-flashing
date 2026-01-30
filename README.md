@@ -157,10 +157,13 @@ sync
   mode con: cols=80 lines=50
   ```
 - I ran `ILHOPFW -vb` to determine my laptop's Cardbus Bridge PCI identifiers, [determining](https://pcilookup.com) that it was a Texas Instruments PCI1450 controller not defined in the INI file.
-- Observing that all the TI cardbus controllers share the same config, and that mine bore a similar product ID, I used `edit` to clone a new matching entry in ILHOPFW.INI with the proper MS-DOS line endings.
-- Then I enabled Genesis Mode, and reflashed the intended firmwares:
+- Observing that all the TI cardbus controllers share the same config in ILHOPFW.INI, and that mine bore a similar product ID, I used `edit` to clone a new matching entry with the proper MS-DOS line endings.
+- Then I was able to successfully enable Genesis Mode:
   ```
   ILHOPFW.EXE -vb -3v -on -3842 0F07 -i ID010001.HEX -gen
+  ```
+- Finally I reflashed the intended firmwares:
+  ```
   ILHOPFW.EXE -vb -3v -on -3842 0F07 -gen -hf -d PK010101.HEX
   ILHOPFW.EXE -vb -3v -on -3842 0F07 -gen -hf -d SF010704.HEX
   ```

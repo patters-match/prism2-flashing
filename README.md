@@ -124,7 +124,7 @@ Finding the kernel sources was very difficult, but I was able to determine the f
 ## Recovering a Bad Flash
 
 ### Update Failure
-I upgraded four different cards using the above method without incident, but while upgrading a Netgear MA401RA (which is labelled MA401 ver 2.5) I encountered a flash failure using `prism2_srec`, bricking the card. The chosen firmwares were definitely correct. It could have been a random glitch, but I suspect that the root cause may lie in the fact that this card's component ID (0x800c) is the only one which was re-used across two divergent hardware types, as seen in the table *3.6 Reference Design Support Map* in [this Intersil specification document](https://web.archive.org/web/20070723081421/http://home.eunet.cz/jt/wifi/download.pdf) aimed at OEMs. As can be seen from that table, these two reference designs have divergent memory maps.
+I upgraded four different cards using the above method without incident, but while upgrading a Netgear MA401RA (which is labelled MA401 ver 2.5) I encountered a flash failure using `prism2_srec`, bricking the card. The chosen firmwares were certainly correct. It could have been a random glitch, but I suspect that the root cause may lie in the fact that this card's component ID (0x800c) is the only one which was re-used across two divergent hardware types, as seen in the table *3.6 Reference Design Support Map* in [this Intersil specification document](https://web.archive.org/web/20070723081421/http://home.eunet.cz/jt/wifi/download.pdf) aimed at OEMs. As can be seen from that table, these two reference designs have divergent memory maps.
 
 ### Tooling Choice
 - The `prism2_srec` tool is unable to recover a bricked card since it needs a driver instance to communicate with.

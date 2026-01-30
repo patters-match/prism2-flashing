@@ -164,4 +164,4 @@ In my case the card's PDA was not damaged so I did not need to concern myself wi
   ILHOPFW.EXE -vb -3v -on -3842 0F07 -gen -hf -d PK010101.HEX
   ILHOPFW.EXE -vb -3v -on -3842 0F07 -gen -hf -d SF010704.HEX
   ```
-- This tool reported that the CIS was invalid, but this was never flashed, and the card reported its information just fine using `pccardctl ident` so I left it alone.
+- After successful flash updates, the tool reported that the CIS was invalid. This wouldn't have been flashed, and the card reported its information just fine using `pccardctl ident` so I left it alone. It was likely in this condition before the failed flash. It's possible there was a specific tuple missing in this Netgear CIS which the Intersil flash tool was expecting, but the recovered card works just fine.

@@ -160,11 +160,11 @@ sync
 - Observing that all the TI cardbus controllers share the same config in ILHOPFW.INI, and that mine bore a similar product ID, I used `edit` to clone a new matching entry, with the proper MS-DOS line endings.
 - Making sure to insert the card in slot 0 as recommended in the worked example, I was able to successfully enable Genesis Mode:
   ```
-  ILHOPFW.EXE -vb -3v -on -3842 0F07 -i ID010001.HEX -gen
+  ILHOPFW -vb -3v -on -3842 0F07 -i ID010001.HEX -gen
   ```
 - Finally I re-flashed the intended Primary and Secondary firmwares:
   ```
-  ILHOPFW.EXE -vb -3v -on -3842 0F07 -gen -hf -d PK010101.HEX
-  ILHOPFW.EXE -vb -3v -on -3842 0F07 -gen -hf -d SF010704.HEX
+  ILHOPFW -vb -3v -on -3842 0F07 -gen -hf -d PK010101.HEX
+  ILHOPFW -vb -3v -on -3842 0F07 -gen -hf -d SF010704.HEX
   ```
 - After successful flash updates, the tool reported that the CIS was invalid. This wouldn't have been flashed, and the card reported its information just fine using `pccardctl ident` so I left it alone. It was likely in this condition before the failed flash attempt. It's possible there was a specific tuple missing in this Netgear CIS which the Intersil flash tool was expecting, but the recovered card works just fine.

@@ -148,8 +148,9 @@ sync
 - Unlike this [worked example](https://junsun.net/linux/intersil-prism/dos-resurrection/prismdos.txt), my card's PDA was not damaged so I did not need to concern myself with it.
 - [Part two](https://junsun.net/linux/intersil-prism/dos-resurrection/DOScd.txt) contains some more useful information.
 - Determine which Initial firmware your NIC id requires in the [device table](https://junsun.net/linux/intersil-prism/IDtable.html).
-- Initial firmwares are scarce. The one I needed for NIC id 0x800c - prefix `D`: id010001.hex - was available [here](https://junsun.net/linux/intersil-prism/dos-resurrection/). There is a [reported success](https://junsun.net/linux/intersil-prism/dos-resurrection/prismdos.txt) using this same firmware to recover NIC id 0x801a.
-- Two initial firmwares - prefixes `1` and `4` - are available [here](https://web.archive.org/web/20071013182828/http://www.netgate.com/support/prism_firmware/primary.tar.gz).
+- Initial firmwares are scarce. Prefixes `1` and `4` - are available [here](https://web.archive.org/web/20071013182828/http://www.netgate.com/support/prism_firmware/primary.tar.gz).
+- The Initial firmware I needed for NIC id 0x800c - prefix `D`: id010001.hex - was available [here](https://junsun.net/linux/intersil-prism/dos-resurrection/).
+- There is a [reported success](https://junsun.net/linux/intersil-prism/dos-resurrection/prismdos.txt) using this same Initial firmware to recover NIC id 0x801a.
 - I modified the bootdisk to include these firmwares and I replaced FLASH.EXE with [ILHOPFW.EXE and its corresponding INI file](https://junsun.net/linux/intersil-prism/dos-resurrection/).
 - I added the [FreeDOS](https://www.freedos.org/download/) `mode`, `more`, and `edit` commands.
 - I ran `ILHOPFW -vb` to determine my laptop's Cardbus Bridge PCI identifiers, [determining](https://pcilookup.com) that it was a Texas Instruments PCI1450 controller not defined in the INI file.

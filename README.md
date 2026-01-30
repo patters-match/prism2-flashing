@@ -128,11 +128,11 @@ I upgraded four different cards using this method without incident, but while up
 
 ### Tooling Choice
 - The `prism2_srec` tool is unable to recover a bricked card since it needs a driver instance to communicate with.
-- There is a suggestion that the [`prism2dl` binary](https://junsun.net/linux/intersil-prism/prism2dl) can recover firmware, but I was unable to get it to detect PCMCIA devices at all.
+- There is a suggestion that the `prism2dl` [binary](https://junsun.net/linux/intersil-prism/prism2dl) can recover firmware, but I was unable to get it to detect PCMCIA devices at all.
 - As a last resort I switched my attention to the DOS [ILHOPFW.EXE](https://junsun.net/linux/intersil-prism/dos-resurrection/) flash tool.
 
 ### Boot Floppy generation
-It turns out that many bootable floppy images are malformed, and have hard disk partition table boot sectors rather than floppy disk ones. Modern firmwares are tolerant of this, but vintage hardware is more picky. I had been concerned my laptop's floppy drive might be dead, but it turned out to be fine once I used [this FreeDOS bootable image](https://web.archive.org/web/20080614011528/http://home.eunet.cz/jt/wifi/floppy_flash.img) which I was able to transfer to Puppy Linux using its FTP client. Since I have no other usable floppy drive I wrote the floppy directly on the laptop from Puppy Linux using:
+It turns out that many bootable floppy images are malformed, and have hard disk partition table boot sectors rather than floppy disk ones. Modern BIOSes are tolerant of this, but vintage hardware is more picky. I had been concerned my laptop's floppy drive might be dead, but it turned out to be fine once I used [this FreeDOS bootable image](https://web.archive.org/web/20080614011528/http://home.eunet.cz/jt/wifi/floppy_flash.img) which I was able to transfer to Puppy Linux using its FTP client. Since I have no other usable floppy drive I wrote the floppy directly on the laptop from Puppy Linux using:
 ```
 dd if=floppy_flash.img of=/dev/fd0 bs=512
 sync

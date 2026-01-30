@@ -140,7 +140,7 @@ sync
 
 ### Recovery Process
 1. Send an *Initial firmware* via the card's bootloader, which will be loaded into the card's onboard RAM, and leave the card powered up. This enables Genesis Mode which can be used for flashing the Primary and Secondary firmwares.
-2. Flash a Primary firmware in Genesis Mode and leave the card powered on.
+2. Flash a Primary firmware in Genesis Mode and leave the card powered up.
 3. Flash a Secondary firmware in Genesis Mode.
 
 ### Method

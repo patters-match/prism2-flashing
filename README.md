@@ -167,4 +167,4 @@ sync
   ILHOPFW.EXE -vb -3v -on -3842 0F07 -gen -hf -d PK010101.HEX
   ILHOPFW.EXE -vb -3v -on -3842 0F07 -gen -hf -d SF010704.HEX
   ```
-- After successful flash updates, the tool reported that the CIS was invalid. This wouldn't have been flashed, and the card reported its information just fine using `pccardctl ident` so I left it alone. It was likely in this condition before the failed flash. It's possible there was a specific tuple missing in this Netgear CIS which the Intersil flash tool was expecting, but the recovered card works just fine.
+- After successful flash updates, the tool reported that the CIS was invalid. This wouldn't have been flashed, and the card reported its information just fine using `pccardctl ident` so I left it alone. It was likely in this condition before the failed flash attempt. It's possible there was a specific tuple missing in this Netgear CIS which the Intersil flash tool was expecting, but the recovered card works just fine.

@@ -132,7 +132,7 @@ I upgraded four different cards using this method without incident, but while up
 - As a last resort I switched my attention to the DOS [ILHOPFW.EXE](https://junsun.net/linux/intersil-prism/dos-resurrection/) flash tool.
 
 ### Boot Floppy generation
-It turns out that many bootable floppy images are malformed, and have hard disk partition table boot sectors rather than floppy disk ones. Modern firmwares are tolerant of this, but vintage hardware is more picky. I had been concerned my laptop's floppy drive might be dead, but it turned out to be fine once I used [this FreeDOS bootable image](https://web.archive.org/web/20080614011528/http://home.eunet.cz/jt/wifi/floppy_flash.img) which I was able to transfer to PuppyLinux using its FTP client. Since I have no other usable floppy drive I wrote the floppy directly on the laptop from PuppyLinux using:
+It turns out that many bootable floppy images are malformed, and have hard disk partition table boot sectors rather than floppy disk ones. Modern firmwares are tolerant of this, but vintage hardware is more picky. I had been concerned my laptop's floppy drive might be dead, but it turned out to be fine once I used [this FreeDOS bootable image](https://web.archive.org/web/20080614011528/http://home.eunet.cz/jt/wifi/floppy_flash.img) which I was able to transfer to Puppy Linux using its FTP client. Since I have no other usable floppy drive I wrote the floppy directly on the laptop from Puppy Linux using:
 ```
 dd if=floppy_flash.img of=/dev/fd0 bs=512
 sync
@@ -150,7 +150,12 @@ In my case the PDA was not damaged so I did not need to concern myself with it.
 - Initial firmwares are very scarce. The one I needed - prefix `D`: id010001.hex - was available [here](https://junsun.net/linux/intersil-prism/dos-resurrection/).
 - Two others - prefixes `1` and `4` - are available [here](https://web.archive.org/web/20071013182828/http://www.netgate.com/support/prism_firmware/primary.tar.gz).
 - I modified the bootdisk to include these and I replaced FLASH.EXE with ILHOPFW.EXE and its corresponding INI file.
-- I added the FreeDOS `mode`, `more`, and `edit` commands.
-- I ran `ILHOPFW -vb` to determine my laptop's Cardbus Bridge PCI identifiers, noting that it was a Texas Instruments controller not defined in the INI file.
+- I added the [FreeDOS](https://www.freedos.org/download/) `mode`, `more`, and `edit` commands.
+- I ran `ILHOPFW -vb` to determine my laptop's Cardbus Bridge PCI identifiers, noting that it was a Texas Instruments PCI1450 controller not defined in the INI file.
 - Noting that all the TI cardbus controllers share the same config, and that mine bore a similar ID, I used `edit` to clone a new matching entry in ILHOPFW.INI with the proper MS-DOS line endings.
-- TBC
+- ```
+  mode con: cols=80 lines=50
+  ILHOPFW.EXE -vb -3v -on -3842 0F07 -i ID010001.HEX -gen
+  ILHOPFW.EXE -vb -3v -on -3842 0F07 -gen -hf -d PK010101.HEX
+  ILHOPFW.EXE -vb -3v -on -3842 0F07 -gen -hf -d SF010704.HEX
+  ```

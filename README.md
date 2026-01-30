@@ -152,12 +152,12 @@ sync
 - The Initial firmware I needed for NIC id 0x800c - prefix `D`: id010001.hex - was available [here](https://junsun.net/linux/intersil-prism/dos-resurrection/). This version can [reportedly](https://junsun.net/linux/intersil-prism/dos-resurrection/prismdos.txt) also recover a card with NIC id 0x801a.
 - I modified the bootdisk to include these firmwares and I replaced FLASH.EXE with [ILHOPFW.EXE and its corresponding INI file](https://junsun.net/linux/intersil-prism/dos-resurrection/).
 - I added the [FreeDOS](https://www.freedos.org/download/) `mode`, `more`, and `edit` commands.
-- I ran `ILHOPFW -vb` to determine my laptop's Cardbus Bridge PCI identifiers, [determining](https://pcilookup.com) that it was a Texas Instruments PCI1450 controller not defined in the INI file.
-- Observing that all the TI cardbus controllers share the same config, and that mine bore a similar product ID, I used `edit` to clone a new matching entry in ILHOPFW.INI with the proper MS-DOS line endings.
-- I switched the console to higher display resolution:
+- After booting from the floppy, I switched the console to higher display resolution:
   ```
   mode con: cols=80 lines=50
   ```
+- I ran `ILHOPFW -vb` to determine my laptop's Cardbus Bridge PCI identifiers, [determining](https://pcilookup.com) that it was a Texas Instruments PCI1450 controller not defined in the INI file.
+- Observing that all the TI cardbus controllers share the same config, and that mine bore a similar product ID, I used `edit` to clone a new matching entry in ILHOPFW.INI with the proper MS-DOS line endings.
 - Then I enabled Genesis Mode, and reflashed the intended firmwares:
   ```
   ILHOPFW.EXE -vb -3v -on -3842 0F07 -i ID010001.HEX -gen

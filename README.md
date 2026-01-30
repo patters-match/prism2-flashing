@@ -150,7 +150,7 @@ sync
 - Determine which Initial firmware your NIC id requires in the [device table](https://junsun.net/linux/intersil-prism/IDtable.html).
 - Initial firmwares are scarce. The one I needed for NIC id 0x800c - prefix `D`: id010001.hex - was available [here](https://junsun.net/linux/intersil-prism/dos-resurrection/). There is a [reported success](https://junsun.net/linux/intersil-prism/dos-resurrection/prismdos.txt) using this same firmware to recover NIC id 0x801a.
 - Two others - prefixes `1` and `4` - are available [here](https://web.archive.org/web/20071013182828/http://www.netgate.com/support/prism_firmware/primary.tar.gz).
-- I modified the bootdisk to include these firmwares and I replaced FLASH.EXE with ILHOPFW.EXE and its corresponding INI file.
+- I modified the bootdisk to include these firmwares and I replaced FLASH.EXE with [ILHOPFW.EXE and its corresponding INI file](https://junsun.net/linux/intersil-prism/dos-resurrection/).
 - I added the [FreeDOS](https://www.freedos.org/download/) `mode`, `more`, and `edit` commands.
 - I ran `ILHOPFW -vb` to determine my laptop's Cardbus Bridge PCI identifiers, [determining](https://pcilookup.com) that it was a Texas Instruments PCI1450 controller not defined in the INI file.
 - Observing that all the TI cardbus controllers share the same config, and that mine bore a similar product ID, I used `edit` to clone a new matching entry in ILHOPFW.INI with the proper MS-DOS line endings.

@@ -162,7 +162,7 @@ sync
   ```
   ILHOPFW.EXE -vb -3v -on -3842 0F07 -i ID010001.HEX -gen
   ```
-- Finally I reflashed the intended firmwares:
+- Finally I reflashed the intended Primary and Secondary firmwares:
   ```
   ILHOPFW.EXE -vb -3v -on -3842 0F07 -gen -hf -d PK010101.HEX
   ILHOPFW.EXE -vb -3v -on -3842 0F07 -gen -hf -d SF010704.HEX

@@ -145,7 +145,7 @@ sync
 
 ### Method
 - Read the Prism flash utility [user guide](https://web.archive.org/web/20040805234847/http://home.eunet.cz/jt/wifi/flash.pdf).
-- Read [this recovery guide](https://junsun.net/linux/intersil-prism/dos-resurrection/prismdos.txt) carefully. Unlike this worked example, my card's PDA was not damaged so I did not need to concern myself with it.
+- Unlike this [worked example](https://junsun.net/linux/intersil-prism/dos-resurrection/prismdos.txt), my card's PDA was not damaged so I did not need to concern myself with it.
 - [Part two](https://junsun.net/linux/intersil-prism/dos-resurrection/DOScd.txt) contains some more useful information.
 - Determine which Initial firmware your NIC id requires in the [device table](https://junsun.net/linux/intersil-prism/IDtable.html).
 - Initial firmwares are scarce. The one I needed for NIC id 0x800c - prefix `D`: id010001.hex - was available [here](https://junsun.net/linux/intersil-prism/dos-resurrection/). There is a [reported success](https://junsun.net/linux/intersil-prism/dos-resurrection/prismdos.txt) using this same firmware to recover NIC id 0x801a.

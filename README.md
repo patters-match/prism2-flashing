@@ -103,7 +103,7 @@ Finding the kernel sources was very difficult, but I was able to determine the f
   cd /initrd/mnt/dev_ro2/
   prism2_srec -D wlan0
   ```
-- Check that the command completes without error, then store this output in a file:
+- Check that the above command completes without error, then store this output in a file:
   ```
   prism2_srec -D wlan0 > backup.pda
   ```

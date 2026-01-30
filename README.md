@@ -139,13 +139,13 @@ sync
 ```
 
 ### Recovery Process
-In my case the card's PDA was not damaged so I did not need to concern myself with it.
 1. Send an *Initial firmware* via the card's bootloader, which will be loaded into the card's onboard RAM, and leave the card powered up. This enables Genesis Mode which can be used for flashing the Primary and Secondary firmwares.
 2. Flash a Primary firmware in Genesis Mode and leave the card powered on.
 3. Flash a Secondary firmware in Genesis Mode.
 
 ### Method
-- Read [this recovery guide](https://junsun.net/linux/intersil-prism/dos-resurrection/prismdos.txt) carefully.
+- Read the Prism flash utility [user guide](https://web.archive.org/web/20040805234847/http://home.eunet.cz/jt/wifi/flash.pdf).
+- Read [this recovery guide](https://junsun.net/linux/intersil-prism/dos-resurrection/prismdos.txt) carefully. Unlike this worked example, my card's PDA was not damaged so I did not need to concern myself with it.
 - [Part two](https://junsun.net/linux/intersil-prism/dos-resurrection/DOScd.txt) contains some more useful information.
 - Determine which Initial firmware your NIC id requires in the [device table](https://junsun.net/linux/intersil-prism/IDtable.html).
 - Initial firmwares are scarce. The one I needed for NIC id 0x800c - prefix `D`: id010001.hex - was available [here](https://junsun.net/linux/intersil-prism/dos-resurrection/). There is a [reported success](https://junsun.net/linux/intersil-prism/dos-resurrection/prismdos.txt) using this same firmware to recover NIC id 0x801a.

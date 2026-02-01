@@ -162,7 +162,7 @@ sync
   ```
   ILHOPFW -vb -3v -on -3842 0F07 -i ID010001.HEX -gen
   ```
-  I assumed 3v like the worked example on the basis that undervolting it wouldn't hurt and I could always try 5v if unsuccessful. I copied the control register settings on the basis that my card had the same RAM layout in the [device table](https://junsun.net/linux/intersil-prism/IDtable.html). These register settings could be worked out from that, the [user guide](https://web.archive.org/web/20040805234847/http://home.eunet.cz/jt/wifi/flash.pdf), and the MAC datasheets ([HFA3841](http://jbnote.free.fr/prism54usb/data/documentation/prism2/datasheet_hfa3841.pdf), [HFA3842](https://web.archive.org/web/20080614011528/http://home.eunet.cz/jt/wifi/HFA3842.pdf)).
+  I assumed 3v like the worked example on the basis that undervolting it wouldn't hurt and I could always try 5v if unsuccessful. I copied the control register settings on the basis that my card had the same RAM layout in the [device table](https://junsun.net/linux/intersil-prism/IDtable.html). These register settings could be determined from that, the [user guide](https://web.archive.org/web/20040805234847/http://home.eunet.cz/jt/wifi/flash.pdf), and the MAC datasheets ([HFA3841](http://jbnote.free.fr/prism54usb/data/documentation/prism2/datasheet_hfa3841.pdf), [HFA3842](https://web.archive.org/web/20080614011528/http://home.eunet.cz/jt/wifi/HFA3842.pdf)).
 - Finally I re-flashed the intended Primary and Secondary firmwares:
   ```
   ILHOPFW -vb -3v -on -3842 0F07 -gen -hf -d PK010101.HEX
